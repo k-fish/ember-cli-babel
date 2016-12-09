@@ -22,6 +22,12 @@ module.exports = {
 
   setupPreprocessorRegistry: function(type, registry) {
     var addon = this;
+    var addonOptions = this._getAddonOptions();
+    var customAddonOptions = addonOptions['ember-cli-babel'];
+    
+    if (customAddonOptions.disableBabelTranspile) {
+      return;
+    }
 
     registry.add('js', {
       name: 'ember-cli-babel',
